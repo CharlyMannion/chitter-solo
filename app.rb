@@ -2,10 +2,7 @@ require 'sinatra/base'
 
 class Chitter < Sinatra::Base
   get '/peeps' do
-    @peeps = [
-      "My first peep",
-      "My second peep"
-    ]
+    @peeps = Peep.all
     erb :"chitter/index"
   end
 
