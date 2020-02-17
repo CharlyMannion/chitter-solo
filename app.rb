@@ -2,11 +2,16 @@ require 'sinatra/base'
 
 class Chitter < Sinatra::Base
   get '/peeps' do
-    'Chitter'
+    erb :"chitter/index"
   end
 
   get '/users/new' do
-    'Sign up to Chitter'
+    erb :"users/new"
+  end
+
+  post '/users' do
+  # create the user and then...
+    redirect '/peeps'
   end
 
   run! if app_file == $0
