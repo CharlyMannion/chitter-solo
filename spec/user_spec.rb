@@ -1,3 +1,4 @@
+require 'bcrypt'
 require 'database_helpers'
 require 'user'
 
@@ -10,6 +11,11 @@ describe '.create' do
     expect(user).to be_a User
     # expect(user.id).to eq persisted_data.first['id']
     expect(user.email).to eq 'test@example.com'
+  end
+    it 'hashes the password using BCrypt' do
+    expect(BCrypt::Password).to receive(:create).with('password123')
+
+    User.create(name: 'Test Person', email: 'test@example.com', username: 'TestUsername', password: 'password123')
   end
 end
 
