@@ -45,7 +45,8 @@ I want to receive an email if I am tagged in a Peep
 Technical Approach:
 -----
 
-This project integrates a database using the `PG` gem and `SQL` queries.
+* This project integrates a database using the `PG` gem and `SQL` queries.
+* It uses BCrypt to encrypt user's passwords
 
 
 Notes on functionality:
