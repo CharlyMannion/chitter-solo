@@ -1,7 +1,7 @@
 def add_test_data
   connection = PG.connect(dbname: 'chitter_test')
-  connection.exec("INSERT INTO peeps (username, name, content) VALUES ('Charly', 'Charlotte Mannion', 'My first peep');")
-  connection.exec("INSERT INTO peeps (username, name, content) VALUES ('Charly', 'Charlotte Mannion', 'Peep');")
+  connection.exec("INSERT INTO peeps (username, name, content, time, date) VALUES ('Charly', 'Charlotte Mannion', 'My first peep', '12:31:00', '2020-02-18');")
+  connection.exec("INSERT INTO peeps (username, name, content, time, date) VALUES ('Charly', 'Charlotte Mannion', 'Peep', '12:32:00', '2020-02-18');")
 end
 
 def happy_sign_in
