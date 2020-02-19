@@ -12,6 +12,8 @@
 <ul>
   <% @peeps.each do |peep| %>
     <li>
+      <%= peep.username %>
+      <br>
       <%= peep.content %>
     </li>
   <% end %>

@@ -8,6 +8,7 @@ class Peep
     @id = id
     @name = name
     @username = username
+    @content = content
     @time = time
     @date = date
   end
