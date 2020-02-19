@@ -1,12 +1,12 @@
 feature 'Authentication' do
   before do
     User.create(name: 'Test Person', email: 'test@example.com', username: 'TestUsername', password: 'password123')
+
     visit '/sessions/new'
   end
+
   scenario 'a user can sign in' do
-      fill_in(:email, with: 'test@example.com')
-      fill_in :password, with: 'password123'
-      click_button('Sign in')
+      happy_sign_in
 
       expect(page).to have_content('Welcome, TestUsername')
     end
@@ -30,6 +30,14 @@ feature 'Authentication' do
     end
 
     # scenario 'a user can sign out' do
+    #   # fill_in(:email, with: 'test@example.com')
+    #   # fill_in :password, with: 'password123'
+    #   # click_button('Sign in')
+    #   happy_sign_in
     #
+    #   click_button('Sign out')
+    #
+    #   expect(page).not_to have_content 'Welcome, test@example.com'
+    #   expect(page).to have_content 'You have signed out.'
     # end
 end
