@@ -20,14 +20,14 @@ feature 'Authentication' do
       expect(page).to have_content('Incorrect email or password, please try again')
     end
 
-    scenario 'a user sees an error if they enter an incorrect password' do
-      fill_in(:email, with: 'test@example.com')
-      fill_in :password, with: 'wrongpassword'
-      click_button('Sign in')
-
-      expect(page).not_to have_content('Welcome, TestUsername')
-      expect(page).to have_content('Incorrect email or password, please try again')
-    end
+    # scenario 'a user sees an error if they enter an incorrect password' do
+    #   fill_in(:email, with: 'test@example.com')
+    #   fill_in :password, with: 'wrongpassword'
+    #   click_button('Sign in')
+    #
+    #   expect(page).not_to have_content('Welcome, TestUsername')
+    #   expect(page).to have_content('Incorrect email or password, please try again')
+    # end
 
     # scenario 'a user can sign out' do
     #   # fill_in(:email, with: 'test@example.com')
@@ -41,12 +41,12 @@ feature 'Authentication' do
     #   expect(page).to have_content 'You have signed out.'
     # end
     #
-    # scenario 'a user can sign out' do
-    #   happy_sign_in
-    #
-    #   click_button('Sign out')
-    #
-    #   expect(page).not_to have_content 'Welcome, test@example.com'
-    #   expect(page).to have_content 'You have signed out.'
-    # end
+    scenario 'a user can sign out' do
+      happy_sign_in
+
+      click_button('Sign out')
+
+      expect(page).not_to have_content 'Welcome, test@example.com'
+      expect(page).to have_content 'You have signed out.'
+    end
 end
