@@ -19,6 +19,18 @@ feature 'Authentication' do
       click_button('Sign in')
 
       expect(page).not_to have_content('Welcome, TestUsername')
-      # expect(page).to have_content('Incorrect email or password, please try again')
+      expect(page).to have_content('Incorrect email or password, please try again')
+    end
+
+    scenario 'a user sees an error if they enter an incorrect password' do
+      User.create(name: 'Test Person', email: 'test@example.com', username: 'TestUsername', password: 'password123')
+
+      visit '/sessions/new'
+      fill_in(:email, with: 'test@example.com')
+      fill_in :password, with: 'wrongpassword'
+      click_button('Sign in')
+
+      expect(page).not_to have_content('Welcome, TestUsername')
+      expect(page).to have_content('Incorrect email or password, please try again')
     end
 end
