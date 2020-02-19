@@ -29,12 +29,6 @@ class Chitter < Sinatra::Base
     erb :'sessions/new'
   end
 
-  # post '/sessions' do
-  #   user = User.authenticate(email: params[:email], password: params[:password])
-  #   session[:user_id] = user.id
-  #   redirect('/peeps')
-  # end
-
   post '/sessions' do
     user = User.authenticate(email: params[:email], password: params[:password])
     if user
@@ -46,6 +40,11 @@ class Chitter < Sinatra::Base
     end
   end
 
+  # post '/sessions/destroy' do
+  #   session.clear
+  #   flash[:notice] = 'You have signed out.'
+  #   redirect('/peeps')
+  # end
 
   run! if app_file == $0
 end

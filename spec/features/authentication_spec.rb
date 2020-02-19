@@ -40,4 +40,13 @@ feature 'Authentication' do
     #   expect(page).not_to have_content 'Welcome, test@example.com'
     #   expect(page).to have_content 'You have signed out.'
     # end
+    #
+    # scenario 'a user can sign out' do
+    #   happy_sign_in
+    #
+    #   click_button('Sign out')
+    #
+    #   expect(page).not_to have_content 'Welcome, test@example.com'
+    #   expect(page).to have_content 'You have signed out.'
+    # end
 end
