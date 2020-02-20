@@ -1,4 +1,5 @@
 require 'pg'
+require_relative './database_connection'
 
 class Peep
 
@@ -14,24 +15,21 @@ class Peep
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_test')
-    else
-      connection = PG.connect(dbname: 'chitter')
-    end
-    result = connection.exec('SELECT * FROM peeps')
+    result = DatabaseConnection.query('SELECT * FROM peeps')
     result.map do |peep|
-      Peep.new(id: peep['id'], name: peep['name'], username: peep['username'], content: peep['content'], time: peep['time'], date: peep['date'])
+      Peep.new(
+        id: peep['id'],
+        name: peep['name'],
+        username: peep['username'],
+        content: peep['content'],
+        time: peep['time'],
+        date: peep['date']
+      )
     end
   end
 
   def self.create(name:, username:, content:, time:, date:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_test')
-    else
-      connection = PG.connect(dbname: 'chitter')
-    end
-    result = connection.exec("INSERT INTO peeps (name, username, content, time, date) VALUES('#{name}', '#{username}', '#{content}','#{time}', '#{date}') RETURNING id, name, username, content, time, date;")
+    result = DatabaseConnection.query("INSERT INTO peeps (name, username, content, time, date) VALUES('#{name}', '#{username}', '#{content}','#{time}', '#{date}') RETURNING id, name, username, content, time, date;")
     Peep.new(id: result[0]['id'], name: result[0]['name'], username: result[0]['username'], content: result[0]['content'], time: result[0]['time'], date: result[0]['date'],)
   end
 end
