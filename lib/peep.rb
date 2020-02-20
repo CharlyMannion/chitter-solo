@@ -30,6 +30,11 @@ class Peep
 
   def self.create(name:, username:, content:, time:, date:)
     result = DatabaseConnection.query("INSERT INTO peeps (name, username, content, time, date) VALUES('#{name}', '#{username}', '#{content}','#{time}', '#{date}') RETURNING id, name, username, content, time, date;")
-    Peep.new(id: result[0]['id'], name: result[0]['name'], username: result[0]['username'], content: result[0]['content'], time: result[0]['time'], date: result[0]['date'],)
+    Peep.new(id: result[0]['id'],
+      name: result[0]['name'],
+      username: result[0]['username'],
+      content: result[0]['content'],
+      time: result[0]['time'],
+      date: result[0]['date'])
   end
 end
