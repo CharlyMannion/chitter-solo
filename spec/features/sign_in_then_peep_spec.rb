@@ -14,6 +14,6 @@ feature 'Peep after sign in' do
     click_button('Peep')
 
     expect(page).to have_content('I am signed in and peeping')
-    expect(page).to have_content('Test Person')
+    expect(page).to have_content('TestUsername')
   end
 end

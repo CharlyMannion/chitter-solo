@@ -22,6 +22,7 @@ describe Peep do
       persisted_data = persisted_data(id: peep.id)
 
       expect(peep).to be_a Peep
+      expect(peep.username).to eq('TestUsername')
     end
   end
 end
