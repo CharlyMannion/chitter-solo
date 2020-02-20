@@ -8,10 +8,10 @@ describe Peep do
 
       peeps = Peep.all
 
-      # expect(peeps.length).to eq(2)
+      expect(peeps.length).to eq(2)
       expect(peeps.first).to be_a Peep
       expect(peeps.first.username).to eq('Charly')
-      # expect(peeps.first.content).to eq('My first peep')
+      expect(peeps.first.content).to eq('My first peep')
     end
   end
 
@@ -23,6 +23,9 @@ describe Peep do
 
       expect(peep).to be_a Peep
       expect(peep.username).to eq('TestUsername')
+      expect(peep.content).to eq('Testing writing a peep')
     end
   end
 end
+
+# need to write a test for peep that checks that the user that created the peep is correct
