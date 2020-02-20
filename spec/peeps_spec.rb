@@ -1,4 +1,5 @@
 require 'peep'
+require 'database_helpers'
 
 describe Peep do
   describe '.all' do
@@ -18,7 +19,7 @@ describe Peep do
     it 'creates a new peep' do
       peep = Peep.create(username: 'TestUsername', name: 'Test Person', content: 'Testing writing a peep', time: '12:06:00', date: '2020-02-18')
 
-      persisted_data = PG.connect(dbname: 'chitter_test').query("SELECT * FROM peeps WHERE id = #{peep.id};")
+      persisted_data = persisted_data(id: peep.id)
 
       expect(peep).to be_a Peep
     end
